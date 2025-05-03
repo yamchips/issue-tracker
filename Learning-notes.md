@@ -27,3 +27,7 @@ In schema.prisma, create an issue model and finish first migration. Then we can 
 ### Build an API
 
 Create /app/api/issues folder and add route.ts and schema.ts file. We need to install zod for checking format and add client.ts in /schema folder to guarantee only one prisma client instance is created.
+
+### Set up Radix UI
+
+Install Radix Theme and configure according to its [instructions](https://www.radix-ui.com/themes/docs/overview/getting-started).
