@@ -31,3 +31,7 @@ Create /app/api/issues folder and add route.ts and schema.ts file. We need to in
 ### Set up Radix UI
 
 Install Radix Theme and configure according to its [instructions](https://www.radix-ui.com/themes/docs/overview/getting-started).
+
+### Build the new issue page
+
+Create a /app/issues/new folder and page.tsx file. Use Text Field and Text Area to get user input. Since we are dealing with user input and submit, we need to make it a client side component. Also add a link at issues/page.tsx to direct user here.
