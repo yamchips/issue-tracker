@@ -43,3 +43,7 @@ In root layout, temporarily add a ThemePanel element, configure the theme and co
 The font family is overridden by Radix UI. To make Inter font or other custome font works, we need to create a variable name for the font, and follow the [instructions](https://www.radix-ui.com/themes/docs/theme/typography#with-nextfont). However, Radix UI still has some bugs and we can add "!important" in our customed css file to force Inter font.
 
 !important make one style override any other rule, even if it's more specific or comes later. Use it sparingly.
+
+### Add a markdown editor
+
+Introduce a library called SimpleMDE. Install it and replace TextArea with SimpleMDE.
