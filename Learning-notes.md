@@ -35,3 +35,11 @@ Install Radix Theme and configure according to its [instructions](https://www.ra
 ### Build the new issue page
 
 Create a /app/issues/new folder and page.tsx file. Use Text Field and Text Area to get user input. Since we are dealing with user input and submit, we need to make it a client side component. Also add a link at issues/page.tsx to direct user here.
+
+### Customize Radix theme
+
+In root layout, temporarily add a ThemePanel element, configure the theme and copy final result. Then replace Theme element in layout with customized theme.
+
+The font family is overridden by Radix UI. To make Inter font or other custome font works, we need to create a variable name for the font, and follow the [instructions](https://www.radix-ui.com/themes/docs/theme/typography#with-nextfont). However, Radix UI still has some bugs and we can add "!important" in our customed css file to force Inter font.
+
+!important make one style override any other rule, even if it's more specific or comes later. Use it sparingly.
