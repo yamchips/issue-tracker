@@ -47,3 +47,9 @@ The font family is overridden by Radix UI. To make Inter font or other custome f
 ### Add a markdown editor
 
 Introduce a library called SimpleMDE. Install it and replace TextArea with SimpleMDE.
+
+We need to dynamically import SimpleMDE because the underlying `codemirror` it depends on relies on `document` to render editors, but the `document` object is part of the browser environment and does not exist on server.
+
+### Handle form submission
+
+Introduce a library called React Hook Form.
