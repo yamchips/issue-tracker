@@ -133,3 +133,7 @@ If we submit an empty form, SimpleMDE regards it as undefined by default. We nee
 ### Create customized ErrorMessage component
 
 Create a customized ErrorMessage component, so we don't have to use `Text` component and define its attribute twice. Use PropsWithChildren to simplify code.
+
+### Add a spinner in button
+
+Refer to this [website](https://tw-elements.com/docs/standard/components/spinners/). Copy the code, create a new component and modify spinner's size and border.
