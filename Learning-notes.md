@@ -52,4 +52,68 @@ We need to dynamically import SimpleMDE because the underlying `codemirror` it d
 
 ### Handle form submission
 
-Introduce a library called React Hook Form.
+Introduce a library called React Hook Form (RHF). Use useForm hook to create a React hook form object and destruct it. Three methods are used: register, handleSubmit, control.
+
+1. register: link input element with the RHF object. Using register makes the element **uncontrolled** component, so we don't have `value` attribute. That's why we need a Controller to wrap SimpleMDE
+
+If we inspect `register('title')`, we find it has following attributes:
+
+```
+{
+  name: "title",
+  onChange: ƒ,
+  onBlur: ƒ,
+  ref: ƒ,
+}
+```
+
+2. handleSubmit: define submit event
+3. control: necessary for Controller element
+
+**SimpleMDE element**
+
+Many 3rd-party components like SimpleMDE are internally designed to be controlled, meaning:
+
+1. They expect a **value** prop (current text).
+
+2. They expect an **onChange** handler to update that text.
+
+So if we don’t provide those props, it might still render, but:
+
+1. We won't be able to sync the content with React Hook Form.
+
+2. React has no idea what the value is.
+
+3. On submission, description is undefined.
+
+**Controlled and uncontrolled components in React**
+
+Controlled components use state to manage form data. Uncontrolled components use ref to manage form data.
+
+Controlled components can validate input in real time. Uncontrolled components can validate input when submitting the form.
+
+Controlled components expect `value` and `onChange` props to manage its state.
+
+[Reference](https://medium.com/@agamkakkar/controlled-v-s-uncontrolled-component-in-react-2db23c6dc32e#:~:text=In%20a%20controlled%20component%2C%20React,what%20to%20insert%20and%20where.)
+
+**Controller element**
+
+Controller is a component from React Hook Form that acts as a bridge between controlled components and the form state. We use three attributes here:
+
+1. name: Name of the rendered component. This attribute is passed to field.name attribute.
+
+2. control: An object returned by useForm() that manages form state internally. We must pass it to `<Controller />` so it can interact with the form.
+
+3. render: A function that tells Controller how to render the actual input.
+
+`({ field }) => (...)`: This syntax is object destructuring — it extracts the field object from the argument. `field` contains:
+
+```
+{
+  name: "description",
+  value: "...",
+  onChange: ƒ,
+  onBlur: ƒ,
+  ref: ƒ,
+}
+```

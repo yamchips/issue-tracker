@@ -17,7 +17,6 @@ interface IssueForm {
 const NewIssuePage = () => {
   const { register, control, handleSubmit } = useForm<IssueForm>();
   const router = useRouter();
-  console.log(register("title"));
   return (
     <form
       className="max-w-xl space-y-3"
