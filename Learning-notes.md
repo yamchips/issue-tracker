@@ -32,7 +32,9 @@ Create /app/api/issues folder and add route.ts and schema.ts file. We need to in
 
 Install Radix Theme and configure according to its [instructions](https://www.radix-ui.com/themes/docs/overview/getting-started).
 
-### Build the new issue page
+## Build the new issue page
+
+### Create an issue page
 
 Create a /app/issues/new folder and page.tsx file. Use Text Field and Text Area to get user input. Since we are dealing with user input and submit, we need to make it a client side component. Also add a link at issues/page.tsx to direct user here.
 
@@ -137,3 +139,13 @@ Create a customized ErrorMessage component, so we don't have to use `Text` compo
 ### Add a spinner in button
 
 Refer to this [website](https://tw-elements.com/docs/standard/components/spinners/). Copy the code, create a new component and modify spinner's size and border.
+
+## Show the issues
+
+### Create a responsive issues table
+
+Use Table in Radix UI to create a table of three columns: issue title, status and create time.
+
+Use Tailwind to hide latter two columns in small screen. Here we use `hidden md:table-cell` not `hidden md:visible`.
+
+Because in Tailwind, `hidden` means `display:none` in CSS. It fully removes the element. `visible` only affects elements with `visibility:hidden`, not `display:none`.
