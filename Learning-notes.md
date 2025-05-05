@@ -149,3 +149,11 @@ Use Table in Radix UI to create a table of three columns: issue title, status an
 Use Tailwind to hide latter two columns in small screen. Here we use `hidden md:table-cell` not `hidden md:visible`.
 
 Because in Tailwind, `hidden` means `display:none` in CSS. It fully removes the element. `visible` only affects elements with `visibility:hidden`, not `display:none`.
+
+### Build issue status badge
+
+Create a new component using Radix UI Badge component.
+
+Use a map to store the relationship between Status and name and color. This map is created outside of the component so we won't create this map each time we render a component.
+
+The color attribute is set to a series of strings, so we need to specify its available values in the definition rather than set its type to string.
