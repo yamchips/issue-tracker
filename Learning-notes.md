@@ -117,3 +117,7 @@ Controller is a component from React Hook Form that acts as a bridge between con
   ref: ƒ,
 }
 ```
+
+### Handle Errors
+
+Create an error state and set it to the error message we receive. Use Callout element in Radix UI to display this error message.
