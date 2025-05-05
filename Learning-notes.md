@@ -121,3 +121,11 @@ Controller is a component from React Hook Form that acts as a bridge between con
 ### Handle Errors
 
 Create an error state and set it to the error message we receive. Use Callout element in Radix UI to display this error message.
+
+### Implement client-side validation
+
+Use zodResolver to check user input validity. Specify it in useForm.
+
+Add a formState and destruct it to use errors object. Use errors.title and errors.description to show the message.
+
+If we submit an empty form, SimpleMDE regards it as undefined by default. We need to add `.default('')` in schema to ensure the description field is always a string, even if empty. In this way, the customized message in schema will be shown.
