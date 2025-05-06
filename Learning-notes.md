@@ -228,3 +228,7 @@ After that, we got a new hint saying that `legacyBehavior` will be deprecated in
     `name = "About"`
 
     `props = { className: "text-blue-500", target: "\_blank" }`
+
+### Additional loading skeletons
+
+Use react loading skeleton in [id]/loading.tsx and new/loading.tsx.
