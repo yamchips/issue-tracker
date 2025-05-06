@@ -189,8 +189,42 @@ Introduce a new library called Tailwind typography. Install it and add `prose` t
 Link component can be imported from two resources:
 
 1. next/link: supports client side navigation
-2. radix/themes: supports a full page reload, is a styled version of a plain HTML <a> tag.
+2. radix/themes: supports a full page reload, is a styled version of a plain HTML `<a>` tag.
 
 To get the client side navigation and a suitable color (because we are using Radix UI's theme), create a Link component combining these two Links.
 
 Refer to this [page](https://nextjs.org/docs/app/api-reference/components/link#if-the-child-is-a-custom-component-that-wraps-an-a-tag).
+
+Using above method raises an error, it leads us to this git [repo](https://github.com/vercel/next.js/commit/489e65ed98544e69b0afd7e0cfc3f9f6c2b803b7) and also asks us to run following command to install a new library.
+
+`npx @next/codemod@latest new-link`
+
+After that, we got a new hint saying that `legacyBehavior` will be deprecated in the future. So, we need to use RadixLink to wrap NextLink to avoid using this attribute.
+
+1.  `asChild` tells Radix to render NextLink instead of a native `<a>`.
+
+2.  `ComponentProps<typeof NextLink>` is a TypeScript utility that extracts all the props that the NextLink component accepts. This means:
+
+    We don’t have to manually type out every prop like href, onClick, className, etc.
+
+    We get full autocomplete, type safety, and future-proofing when Next.js adds new props.
+
+3.  `const Link = ({ href, name, ...props }: Props) => { ... }`
+
+    We're destructuring the Props object:
+
+    We explicitly pull out href and name
+
+    Then collect the rest of the props into a new object called props
+
+    For example, if someone uses your Link like this:
+
+    `<Link href="/about" name="About" className="text-blue-500" target="_blank" />`
+
+    Then:
+
+    `href = "/about"`
+
+    `name = "About"`
+
+    `props = { className: "text-blue-500", target: "\_blank" }`
