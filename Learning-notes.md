@@ -232,3 +232,7 @@ After that, we got a new hint saying that `legacyBehavior` will be deprecated in
 ### Additional loading skeletons
 
 Use react loading skeleton in [id]/loading.tsx and new/loading.tsx.
+
+### Organize imports
+
+Create an index.ts file in /app/components folder and put all components' import here.
