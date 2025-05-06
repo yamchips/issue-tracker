@@ -165,3 +165,11 @@ Install delay library. Create a loading.tsx besides page.tsx. Next.js will show 
 Install a react-loading-skeleton library. Copy the import from its document. Use Skeleton when we need to render data.
 
 Separate 'New Issue' button as a component and add it to both the page.tsx and loading.tsx file to make sure the layout doesn't change much.
+
+### Show issue details
+
+Create an [id] folder and a loading.tsx and page.tsx in it.
+
+In page.tsx, we get the input id and use prisma to find the issue. A `notFound()` function is used when the id is invalid, and we don't need to add `return` in front of it. For now, we only show the details in paragraph.
+
+In loading.tsx, we add some text to indicate loading status.
