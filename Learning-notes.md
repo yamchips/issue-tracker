@@ -183,3 +183,14 @@ Use Radix UI's Heading, Text, Card, Flex to style this page.
 Add a new issue with some markdown styles, these styles cannot be shown in new issue page.
 
 Introduce a new library called Tailwind typography. Install it and add `prose` to the `Card` component so the style of markdown is shown.
+
+### Build a styled link component
+
+Link component can be imported from two resources:
+
+1. next/link: supports client side navigation
+2. radix/themes: supports a full page reload, is a styled version of a plain HTML <a> tag.
+
+To get the client side navigation and a suitable color (because we are using Radix UI's theme), create a Link component combining these two Links.
+
+Refer to this [page](https://nextjs.org/docs/app/api-reference/components/link#if-the-child-is-a-custom-component-that-wraps-an-a-tag).
