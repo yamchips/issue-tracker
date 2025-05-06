@@ -157,3 +157,11 @@ Create a new component using Radix UI Badge component.
 Use a map to store the relationship between Status and name and color. This map is created outside of the component so we won't create this map each time we render a component.
 
 The color attribute is set to a series of strings, so we need to specify its available values in the definition rather than set its type to string.
+
+### Add loading skeleton
+
+Install delay library. Create a loading.tsx besides page.tsx. Next.js will show this loading page when loading. Use delay to force a 2 seconds delay.
+
+Install a react-loading-skeleton library. Copy the import from its document. Use Skeleton when we need to render data.
+
+Separate 'New Issue' button as a component and add it to both the page.tsx and loading.tsx file to make sure the layout doesn't change much.
