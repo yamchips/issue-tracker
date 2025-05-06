@@ -173,3 +173,7 @@ Create an [id] folder and a loading.tsx and page.tsx in it.
 In page.tsx, we get the input id and use prisma to find the issue. A `notFound()` function is used when the id is invalid, and we don't need to add `return` in front of it. For now, we only show the details in paragraph.
 
 In loading.tsx, we add some text to indicate loading status.
+
+### Style issue detail page
+
+Use Radix UI's Heading, Text, Card, Flex to style this page.
