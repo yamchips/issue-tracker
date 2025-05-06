@@ -177,3 +177,9 @@ In loading.tsx, we add some text to indicate loading status.
 ### Style issue detail page
 
 Use Radix UI's Heading, Text, Card, Flex to style this page.
+
+### Add markdown preview
+
+Add a new issue with some markdown styles, these styles cannot be shown in new issue page.
+
+Introduce a new library called Tailwind typography. Install it and add `prose` to the `Card` component so the style of markdown is shown.
