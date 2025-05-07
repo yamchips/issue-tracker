@@ -236,3 +236,9 @@ Use react loading skeleton in [id]/loading.tsx and new/loading.tsx.
 ### Organize imports
 
 Create an index.ts file in /app/components folder and put all components' import here.
+
+## Update issues
+
+### Add the edit button
+
+In [id] page, we change the div into a Grid. To get responsive design, we use `initial` and `xs` to change Grid's column from 1 to 2. Then we install Radix UI icons library and add an edit button with pencil 2 icon.
