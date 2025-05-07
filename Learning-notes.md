@@ -254,3 +254,13 @@ Create a '\_components' folder and IssueForm.tsx, move code in /issues/new/page.
 Create an optional props called issue for IssueForm. Set default value of title and description field.
 
 Use IssueForm component in /issues/new/page.tsx and [id]/edit/page.tsx.
+
+### Build an API
+
+Create /api/issues/[id]/route.ts. Create a PATCH method and add two parameters: request and params from Props.
+
+In the PATCH function, first we check whether the request body fits issue schema, then we get the id parameter and use it to find the issue. If we cannot find the issue, return 404; otherwise, we update the issue.
+
+## Further work
+
+1. Update the status of an issue in edit issue page
