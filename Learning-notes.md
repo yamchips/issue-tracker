@@ -267,30 +267,6 @@ In IssueForm, add an if clause to check whether we already have an issue. If so,
 
 Also add a function to show button text according to issue object.
 
-### Understand caching
-
-In Next.js, we have three types of cache (three cache layers).
-
-1. **Data cache**
-
-   When we use `fetch` function to get data. The data is stored in the file system. It won't reloaded unless we redeploy the app. We can use following options to revalidate or disable this behavior.
-
-   `fetch('', {cache: 'no-store'})`
-
-   `fetch('', {next: {revalidate: 3600}})`
-
-2. **Full Route Cache(Cache on the server)**
-
-   This type of cache is used to store the output of statically rendered routes.
-
-   In Next.js, we have static and dynamic rendering. Static rendering happens when our routes are rendered statically (at build time).Dynamic rendering means our routes are rendered dynamically at request time. In Next.js, routes that **don't have a parameter** are considered static by default.
-
-   This cache is also stored in the file system and won't reload unless we redeploy our app.
-
-   For example, the issue page is static by default. That means if we create a new issue, it cannot be shown in this page. So, we need to make this page non-static.
-
-   Refer to this [page](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config). We can add `export const dynamic = 'force-dynamic'` before the default export to make this page dynamic.
-
 ## Further work
 
 1. Update the status of an issue in edit issue page
