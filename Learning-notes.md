@@ -246,3 +246,11 @@ In [id] page, we change the div into a Grid. To get responsive design, we use `i
 ### Apply the single responsibility principle (SRP)
 
 Create two components, IssueDetail and IssueEditButton and organize the code in [id]/page.tsx.
+
+### Build the edit issue page
+
+Create a '\_components' folder and IssueForm.tsx, move code in /issues/new/page.tsx into IssueForm. Modify the type name to IssueFormData and function name to IssueForm.
+
+Create an optional props called issue for IssueForm. Set default value of title and description field.
+
+Use IssueForm component in /issues/new/page.tsx and [id]/edit/page.tsx.
