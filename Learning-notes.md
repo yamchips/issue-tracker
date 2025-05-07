@@ -261,6 +261,12 @@ Create /api/issues/[id]/route.ts. Create a PATCH method and add two parameters: 
 
 In the PATCH function, first we check whether the request body fits issue schema, then we get the id parameter and use it to find the issue. If we cannot find the issue, return 404; otherwise, we update the issue.
 
+### Update the issue
+
+In IssueForm, add an if clause to check whether we already have an issue. If so, we use post method; otherwise, post method.
+
+Also add a function to show button text according to issue object.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
