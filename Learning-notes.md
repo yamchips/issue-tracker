@@ -291,6 +291,14 @@ In Next.js, we have three types of cache (three cache layers).
 
    Refer to this [page](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config). We can add `export const dynamic = 'force-dynamic'` before the default export to make this page dynamic.
 
+3. **Router Cache(Client-side Cache)**
+
+   Store the payload of pages in browser. Lasts for a session, refreshes every time when reloading.
+
+   The pages stored in client-side cache get automatic invalidation depending on how they are rendered. For static routes, the invalidation time is 5 minutes; for dynamic routes, 30 seconds.
+
+   We can add a `router.refresh()` to force the page to refresh in IssueForm component.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
