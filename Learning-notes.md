@@ -321,6 +321,12 @@ Then we add a Container from Radix UI in app/layout.tsx to wrap children in main
 
 Refer to this [page](https://www.radix-ui.com/themes/docs/components/alert-dialog) and add a AlertDialog to wrap the button.
 
+## Build an API to delete
+
+In app/api/issues/[id]/route.ts file, add a DELETE function. We need to include `request:NextRequest` here because if we totally delete it, Next.js might cache the response.
+
+Example: We delete an issue with id = 10, it succeeds. Then we delete it again, it should return not found. But since the response is cached, we get a 200 OK response.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
