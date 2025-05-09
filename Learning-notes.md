@@ -351,6 +351,12 @@ To avoid seeing these two skeletons, we adjust the page that shows all issues to
 
 Refer to this [page](https://next-auth.js.org/getting-started/example#install-nextauth). Then in dot env file, set up NEXTAUTH_URL to our website name and NEXTAUTH_SECRET to a random number. Use `openssl rand -base64 32` to generate a random long string.
 
+### Configure Google Provider
+
+Go to Next Auth Google [page](https://next-auth.js.org/providers/google), click the configuration link and configure a credential.
+
+Then modify /api/auth/[...nextauth]/route.ts file as suggested in the example. Add a ! mark after the variable to dismiss the error.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
