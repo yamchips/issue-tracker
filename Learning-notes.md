@@ -335,6 +335,10 @@ Go to IssueDeleteButton, in the AlertDialog's delete button, add an onclick even
 
 In the delete function, add a try-catch block to deal with error. Create a state in this page and when the state is true, open a new AlertDialog which shows some message. Remember to **reset** the state to false when clicking the button.
 
+### Add spinner when deleting
+
+In delete button, create a state to manage deletion. Add a spinner to indicate the deletion is in progress.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
