@@ -317,6 +317,10 @@ Add a delete button on [id] page. Use Flex to arrange the edit and delete button
 
 Then we add a Container from Radix UI in app/layout.tsx to wrap children in main, it has an attribute called size and by default it's 4. This element can create a wrapper of its children and size 4 makes them have a max width of 1136px.
 
+### Add a confirmation dialog box
+
+Refer to this [page](https://www.radix-ui.com/themes/docs/components/alert-dialog) and add a AlertDialog to wrap the button.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
