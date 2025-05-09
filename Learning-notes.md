@@ -345,6 +345,12 @@ In the IssueToolBar, we have a New Issue button. Now when clicking the button, t
 
 To avoid seeing these two skeletons, we adjust the page that shows all issues to a new folder called issues/list. We also adjust the /issues/[id]/edit folder to /issues/edit and create /issues/edit/[id] and put files in /issues/edit into this new folder. We also need to adjust the links in `router.push()` and `Link`.
 
+## Authentication
+
+### Set up Next Auth
+
+Refer to this [page](https://next-auth.js.org/getting-started/example#install-nextauth). Then in dot env file, set up NEXTAUTH_URL to our website name and NEXTAUTH_SECRET to a random number. Use `openssl rand -base64 32` to generate a random long string.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
