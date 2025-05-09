@@ -299,6 +299,18 @@ In Next.js, we have three types of cache (three cache layers).
 
    We can add a `router.refresh()` to force the page to refresh in IssueForm component.
 
+### Improve the loading experience
+
+When visiting app/issues/new/page.tsx, we can see a skeleton while loading. But when refresh, we see a TextField element and the SimpleMDE is loaded afterwards. That's because we dynamically load the SimpleMDE element as a client side component.
+
+To improve the loading experience of this page, we can dynamically import the entire form. So, in IssueForm we delete the dynamic import statement and static import the SimpleMDE element. Then, in page.tsx, we dynamically import entire form. Besides, we need to set ssr to false and specify loading method to improve refresh experience. Finally, we need to set page as a client component.
+
+In Mosh's video, he applied the same improvement to app/issues/[id]/edit/page.tsx but in the latest version his improvement doesn't work. Because:
+
+**In Next.js 14+, `ssr: false` and dynamic import must be used in client components. Client components cannot be asynchronous.**
+
+Edit page need to find data from database so it's asynchrounous and it must be a server component. So, we create a wrapper element to contain the form and make that element client component.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
