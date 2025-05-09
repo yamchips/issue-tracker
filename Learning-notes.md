@@ -339,6 +339,12 @@ In the delete function, add a try-catch block to deal with error. Create a state
 
 In delete button, create a state to manage deletion. Add a spinner to indicate the deletion is in progress.
 
+### Optimize file structure
+
+In the IssueToolBar, we have a New Issue button. Now when clicking the button, the loading file in the same folder with page.tsx file works and it shows the skeleton of this page. When we are redirected to /issues/new page, the loading file in /issues/new also works and show another skeleton.
+
+To avoid seeing these two skeletons, we adjust the page that shows all issues to a new folder called issues/list. We also adjust the /issues/[id]/edit folder to /issues/edit and create /issues/edit/[id] and put files in /issues/edit into this new folder. We also need to adjust the links in `router.push()` and `Link`.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
