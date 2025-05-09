@@ -327,6 +327,10 @@ In app/api/issues/[id]/route.ts file, add a DELETE function. We need to include 
 
 Example: We delete an issue with id = 10, it succeeds. Then we delete it again, it should return not found. But since the response is cached, we get a 200 OK response.
 
+### Implement deleting issue on the button
+
+Go to IssueDeleteButton, in the AlertDialog's delete button, add an onclick event to delete the issue by id.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
