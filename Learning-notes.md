@@ -331,6 +331,10 @@ Example: We delete an issue with id = 10, it succeeds. Then we delete it again, 
 
 Go to IssueDeleteButton, in the AlertDialog's delete button, add an onclick event to delete the issue by id.
 
+### Handle deletion error
+
+In the delete function, add a try-catch block to deal with error. Create a state in this page and when the state is true, open a new AlertDialog which shows some message. Remember to **reset** the state to false when clicking the button.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
