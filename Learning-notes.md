@@ -311,6 +311,12 @@ In Mosh's video, he applied the same improvement to app/issues/[id]/edit/page.ts
 
 Edit page need to find data from database so it's asynchrounous and it must be a server component. So, we create a wrapper element to contain the form and make that element client component.
 
+### Add a delete button and make issue detail page responsive
+
+Add a delete button on [id] page. Use Flex to arrange the edit and delete button. To make responsive design, first we set Grid container to `columns={{ initial: "1", sm: "5" }}` and the first Box to `className="md:col-span-4"`. Here we use `sm` and `md` because `columns...` is Radix UI attribute and in Radix UI, `sm` corresponds to 768px. The `className...` is Tailwind attribute and `md` corresponds to 768px.
+
+Then we add a Container from Radix UI in app/layout.tsx to wrap children in main, it has an attribute called size and by default it's 4. This element can create a wrapper of its children and size 4 makes them have a max width of 1136px.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
