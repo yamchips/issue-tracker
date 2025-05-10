@@ -373,6 +373,23 @@ Then create a migration. `npx prisma migrate dev`
 
 If we meet an error, go to Application panel and delete the cookies from previous login.
 
+### Add log in and log out links
+
+Use useSession API to get status and user data. Add a Link to NavBar component. Add a Provider file and return a SessionProvider, make it client component. Wrap all elements inside it.
+
+**Note:**
+
+Wrapping all elements inside the provider won't make all elements client side. Only components that rely on useSession and depend on client-only logic are client components.
+
+**Update in Next Auth v5**
+
+In the latest version, we can use the new `auth()` function. This new function is only available on server component. [source](https://authjs.dev/getting-started/migrating-to-v5#authenticating-server-side)
+
+```
+import { auth } from "@/auth"; // your configured auth file
+const session = await auth();
+```
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
