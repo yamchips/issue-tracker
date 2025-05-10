@@ -427,6 +427,22 @@ const nextConfig = {
 
 After change the configuration file, we need to restart the server.
 
+### Refactor NavBar component
+
+Create two constants to refactor NavBar so it only lays out its children.
+
+Create a global css class called 'nav-link'.
+
+```
+@layer utilities {
+  .nav-link {
+    @apply text-zinc-500 hover:text-zinc-800 transition-colors
+  }
+}
+```
+
+`@layer utilities` means we are creating a custom utility class. There are two more options: base and components. Base is for resetting styles and setting base elements like `html`, `body`. Components is for custom component classes like `.btn`, `.card`.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
