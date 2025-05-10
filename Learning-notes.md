@@ -363,6 +363,8 @@ Refer to this [page](https://authjs.dev/getting-started/adapters/prisma) but sli
 
 `npm i @next-auth/prisma-adpater@1.0.7`
 
+In 2025, Next Auth is updated so we can use the suggested package, not the old version.
+
 In [...nextauth]/route.ts, add prisma adapter as shown in the above page. Add session strategy to 'jwt'.
 
 Then copy the user model to schema.prisma file.
