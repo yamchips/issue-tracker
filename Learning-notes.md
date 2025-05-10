@@ -398,6 +398,35 @@ Use Flex to rearrange the layout of NavBar component.
 
 When a user logs in, we show a drop down menu. Here, we use DropDownMenu, Avatar component in Radix UI theme.
 
+### Fix avatar not loading
+
+The avatar doesn't show. Go to Network, choose Img and see the request send to the server. We can see the referrer policy is 'strict-origin-when-cross-origin'. We need to set it to 'no-referrer'.
+
+Method 1:
+
+In Avatar element, set the attribute `eferrerPolicy="no-referrer"`. In my case it works.
+
+Method 2:
+
+In next.config.js file, set nextConfig to this:
+
+```
+const nextConfig = {
+   async headers() {
+      return [
+         {
+            source: "/:path*",
+            headers: [
+               {key: "referrer-policy", value: "no-referrer"}
+            ]
+         }
+      ]
+   }
+}
+```
+
+After change the configuration file, we need to restart the server.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
