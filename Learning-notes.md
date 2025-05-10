@@ -357,6 +357,20 @@ Go to Next Auth Google [page](https://next-auth.js.org/providers/google), click 
 
 Then modify /api/auth/[...nextauth]/route.ts file as suggested in the example. Add a ! mark after the variable to dismiss the error.
 
+### Add the prisma adapter
+
+Refer to this [page](https://authjs.dev/getting-started/adapters/prisma) but slightly change code to:
+
+`npm i @next-auth/prisma-adpater@1.0.7`
+
+In [...nextauth]/route.ts, add prisma adapter as shown in the above page. Add session strategy to 'jwt'.
+
+Then copy the user model to schema.prisma file.
+
+Then create a migration. `npx prisma migrate dev`
+
+If we meet an error, go to Application panel and delete the cookies from previous login.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
