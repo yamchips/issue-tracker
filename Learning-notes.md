@@ -383,12 +383,16 @@ Wrapping all elements inside the provider won't make all elements client side. O
 
 **Update in Next Auth v5**
 
-In the latest version, we can use the new `auth()` function. This new function is only available on server component. [source](https://authjs.dev/getting-started/migrating-to-v5#authenticating-server-side)
+In the latest version, we can use the new `auth()` function. This new function is only available on server component. [source](https://authjs.dev/getting-started/migrating-to-v5#authenticating-server-sidegi)
 
 ```
 import { auth } from "@/auth"; // your configured auth file
 const session = await auth();
 ```
+
+### Change the layout of NavBar
+
+Use Flex to rearrange the layout of NavBar component.
 
 ## Further work
 
