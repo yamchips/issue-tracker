@@ -33,7 +33,8 @@ const NavBar = () => {
 
 const AuthStatus = () => {
   const { status, data: session } = useSession();
-  if (status === "loading") return null;
+  if (status === "loading")
+    return <div className="w-8 h-8 bg-gray-200 rounded-full" />;
   if (status === "unauthenticated")
     return (
       <Link className="nav-link" href="/api/auth/signin">

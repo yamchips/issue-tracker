@@ -443,6 +443,14 @@ Create a global css class called 'nav-link'.
 
 `@layer utilities` means we are creating a custom utility class. There are two more options: base and components. Base is for resetting styles and setting base elements like `html`, `body`. Components is for custom component classes like `.btn`, `.card`.
 
+### Add loading skeleton to AuthStatus
+
+Import the custom skeleton and set a width to it when the status is loading.
+
+`if (status === "loading") return <Skeleton width="3rem" />;`
+
+I think it's a bit wierd so I use a gray circle to replace it.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
