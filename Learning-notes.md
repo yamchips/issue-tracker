@@ -394,6 +394,10 @@ const session = await auth();
 
 Use Flex to rearrange the layout of NavBar component.
 
+### Add a drop down menu
+
+When a user logs in, we show a drop down menu. Here, we use DropDownMenu, Avatar component in Radix UI theme.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
