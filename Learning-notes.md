@@ -451,6 +451,18 @@ Import the custom skeleton and set a width to it when the status is loading.
 
 I think it's a bit wierd so I use a gray circle to replace it.
 
+### Secure the app
+
+Add a middleware.ts under project folder, add routes that need user log in. So, we can protect sensitive functions.
+
+To protect endpoints, we could add the routes to middleware. But in the future if we want to expose public endpoints, they cannot be reached. Instead, we use `getServerSession` in every function we want to protect and return 401 if no session exists.
+
+## Assign issue to user
+
+### Build assignee dropdown button
+
+Use Radix UI component Select. Hard code the choice for now.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
