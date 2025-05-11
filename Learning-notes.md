@@ -463,6 +463,20 @@ To protect endpoints, we could add the routes to middleware. But in the future i
 
 Use Radix UI component Select. Hard code the choice for now.
 
+### Fetch users from database
+
+First we create a new endpoint for fetching all users. Then, we can call this endpoint in server component or client component.
+
+Mosh's way (client fetch):
+
+In AssigneeSelect, create a state to store users array and an effect hook to get user data asynchronously. The dependency of the effect hook is an empty array.
+
+My way (server fetch):
+
+In issues/[id]/page.tsx, fetch user data and add a paramter to AssigneeSelect. Pass the users array to AssigneeSelect.
+
+In real world, for one current users, the assignees won't change often. Fetching all assignees requires considering current user's department, role and project. So, server fetch is a better option. This version of code is in branch 'server-side-fetch'
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
