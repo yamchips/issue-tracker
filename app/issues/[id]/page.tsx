@@ -4,12 +4,15 @@ import { notFound } from "next/navigation";
 import IssueDetails from "./IssueDetails";
 import IssueEditButton from "./IssueEditButton";
 import IssueDeleteButton from "./IssueDeleteButton";
+import { getServerSession } from "next-auth";
+import authOptions from "@/app/auth/authOptions";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
 const IssueDetailPage = async ({ params }: Props) => {
+  const session = await getServerSession(authOptions);
   const { id } = await params;
   const newId = parseInt(id);
   if (isNaN(newId)) {
@@ -28,7 +31,7 @@ const IssueDetailPage = async ({ params }: Props) => {
 
       <Flex direction="column" gap="4">
         <IssueEditButton issueId={issue.id} />
-        <IssueDeleteButton issueId={issue.id} />
+        {session && <IssueDeleteButton issueId={issue.id} />}
       </Flex>
     </Grid>
   );
