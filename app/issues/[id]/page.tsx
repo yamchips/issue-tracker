@@ -7,6 +7,8 @@ import IssueDeleteButton from "./IssueDeleteButton";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 import AssigneeSelect from "./AssigneeSelect";
+import axios from "axios";
+import { User } from "@prisma/client";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -23,6 +25,13 @@ const IssueDetailPage = async ({ params }: Props) => {
     where: { id: newId },
   });
   if (!issue) notFound();
+  let users: User[] = [];
+  try {
+    const response = await axios.get<User[]>("http://localhost:3000/api/users");
+    users = response.data;
+  } catch (error) {
+    console.error(error);
+  }
 
   return (
     <Grid columns={{ initial: "1", sm: "5" }} gap="5">
@@ -31,7 +40,7 @@ const IssueDetailPage = async ({ params }: Props) => {
       </Box>
 
       <Flex direction="column" gap="4">
-        {session && <AssigneeSelect />}
+        {session && <AssigneeSelect users={users} />}
         <IssueEditButton issueId={issue.id} />
         {session && <IssueDeleteButton issueId={issue.id} />}
       </Flex>
