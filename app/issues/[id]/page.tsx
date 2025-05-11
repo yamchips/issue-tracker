@@ -9,6 +9,7 @@ import authOptions from "@/app/auth/authOptions";
 import AssigneeSelect from "./AssigneeSelect";
 import axios from "axios";
 import { User } from "@prisma/client";
+import { baseUrl } from "@/app/components";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -27,7 +28,7 @@ const IssueDetailPage = async ({ params }: Props) => {
   if (!issue) notFound();
   let users: User[] = [];
   try {
-    const response = await axios.get<User[]>("http://localhost:3000/api/users");
+    const response = await axios.get<User[]>(baseUrl + "/api/users");
     users = response.data;
   } catch (error) {
     console.error(error);
