@@ -504,6 +504,20 @@ In the Provider, we return a QueryClientProvider element which uses React Contex
 
 React Context is a built-in feature that allows you to share state or values across your component tree without having to pass props down manually at every level.
 
+### Fetch data with Tanstack React Query
+
+In AssigneeSelect, replace useState and useEffect with useQuery.
+
+Params:
+
+queryKey: an array of strings. For now we only pass a string to represent a query. If the query becomes complex, we can define it like: `queryKey: ["users", { departmentId, role: "admin" }]`.
+
+queryFn: a function to query. Return type is data, not a Promise.
+
+staleTime: refresh time in ms.
+
+retry: if first query fails, retry given number of times.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
