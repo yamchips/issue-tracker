@@ -518,6 +518,39 @@ staleTime: refresh time in ms.
 
 retry: if first query fails, retry given number of times.
 
+### Add assigned issues to prisma schema
+
+Modify Issue and User model in schema.prisma.
+
+**Understand prisma schema**
+
+@@map('accounts'): map current model to a table named 'accounts' in database
+
+@@id([field1, field2]): a composite primary key
+
+@@index([field]): add a database index to field to improve query performance
+
+```
+model Authenticator {
+   ...
+   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+   ...
+}
+```
+
+If a User record is deleted, all related Authenticator records will automatically be deleted as well.
+
+In User model, there are four fields not shown in the database:
+
+```
+accounts      Account[]
+sessions      Session[]
+Authenticator Authenticator[]
+assignedIssues Issue[]
+```
+
+They are relation fields, the inverse side of the relationships defined in the other models(Account, Session, Authenticator, Issue). They don't result in any physical columns.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
