@@ -477,6 +477,33 @@ In issues/[id]/page.tsx, fetch user data and add a paramter to AssigneeSelect. P
 
 In real world, for one current users, the assignees won't change often. Fetching all assignees requires considering current user's department, role and project. So, server fetch is a better option. This version of code is in branch 'server-side-fetch'
 
+**Server-side fetching vs Client-side fetching**
+
+| Feature Type                 | Preferred Fetching                                  |
+| ---------------------------- | --------------------------------------------------- |
+| Static marketing page        | Server-side                                         |
+| Blog post (SEO needed)       | Server-side                                         |
+| User dashboard (auth needed) | Client-side (`useQuery`)                            |
+| Notifications / dropdowns    | Client-side                                         |
+| Admin panel data table       | Client-side (with caching)                          |
+| Product page with reviews    | Hybrid (SS fetch for product, CS fetch for reviews) |
+
+Use server-side when SEO, fast first paint, or security is critical.
+
+Use client-side when interactivity, personalization, or caching is key.
+
+### Set up Tanstack Query
+
+Install a library called tanstack/react-query. Create a QueryProvider file at app/ folder.
+
+Create a query client instance which contains cache for storing data that we get from the backend. We should pass this using the provider to our component tree.
+
+In the Provider, we return a QueryClientProvider element which uses React Context under the hood.
+
+**React Context**
+
+React Context is a built-in feature that allows you to share state or values across your component tree without having to pass props down manually at every level.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
