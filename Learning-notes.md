@@ -567,6 +567,12 @@ Here, Mosh's video is outdated. We need to:
 
 Install a library called react-hot-toast. `npm i react-hot-toast@2.4.1`. Import toast and Toaster in the AssigneeSelect component. Then we use `catch` to handle the error.
 
+## Build the issue filter
+
+### Create a filter component
+
+Use Select component in Radix UI. Create a statuses array to represent the name shown in the dropdown menu and status. Modify the ToolBar component to change the layout.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
