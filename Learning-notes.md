@@ -404,7 +404,7 @@ The avatar doesn't show. Go to Network, choose Img and see the request send to t
 
 Method 1:
 
-In Avatar element, set the attribute `eferrerPolicy="no-referrer"`. In my case it works.
+In Avatar element, set the attribute `referrerPolicy="no-referrer"`. In my case it works.
 
 Method 2:
 
@@ -550,6 +550,18 @@ assignedIssues Issue[]
 ```
 
 They are relation fields, the inverse side of the relationships defined in the other models(Account, Session, Authenticator, Issue). They don't result in any physical columns.
+
+### Assign an issue to user
+
+Add onValueChange attribute to Select.Root, which requires a function. Inside the function, we use axios to send patch request to current issue to update the Issue object. This function's parameter is the value of Select.Item.
+
+To unassign an issue, we create a new Select.Item and set its value to 'unassigned' and text to 'Unassigned'.
+
+Here, Mosh's video is outdated. We need to:
+
+1. Spread current issue object when sending patch request
+2. Modify /api/issues/[id]/route.ts PATCH method, set `data: validation.data` for future scaling. Also, modify schema, add all possible fields and make all fields optional. Because in PATCH, we might only update part of all fields. AssignedToUserId field also can be null, so add nullable to it.
+3. Set 'unassigned' as value because Radix UI doesn't allow empty string as value.
 
 ## Further work
 

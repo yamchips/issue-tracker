@@ -1,5 +1,5 @@
 import authOptions from "@/app/auth/authOptions";
-import { issueSchema } from "@/app/validationSchemas";
+import { issuePatchSchema } from "@/app/validationSchemas";
 import { prisma } from "@/prisma/client";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -14,7 +14,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     return NextResponse.json({}, { status: 401 });
   }
   const body = await request.json();
-  const validation = issueSchema.safeParse(body);
+  const validation = issuePatchSchema.safeParse(body);
   if (!validation.success) {
     return NextResponse.json(validation.error.errors, { status: 400 });
   }
@@ -34,10 +34,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
 
   const newIssue = await prisma.issue.update({
     where: { id: issue.id },
-    data: {
-      title: body.title,
-      description: body.description,
-    },
+    data: validation.data,
   });
   return NextResponse.json(newIssue);
 }
