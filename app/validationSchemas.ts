@@ -9,8 +9,13 @@ export const issuePatchSchema = z.object({
   description: z
     .string()
     .min(1, { message: "Description is required." })
-    .default("")
+    .max(65535)
     .optional(),
   status: z.enum(["OPEN", "IN_PROGRESS", "CLOSED"]).optional(),
-  assignedToUserId: z.string().optional().nullable(),
+  assignedToUserId: z
+    .string()
+    .min(1, { message: "AssignedToUserId is required." })
+    .max(255)
+    .optional()
+    .nullable(),
 });
