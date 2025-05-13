@@ -563,6 +563,10 @@ Here, Mosh's video is outdated. We need to:
 2. Modify /api/issues/[id]/route.ts PATCH method, set `data: validation.data` for future scaling. Also, modify schema, add all possible fields and make all fields optional. Because in PATCH, we might only update part of all fields. AssignedToUserId field also can be null, so add nullable to it.
 3. Set 'unassigned' as value because Radix UI doesn't allow empty string as value.
 
+### Show toast notification
+
+Install a library called react-hot-toast. `npm i react-hot-toast@2.4.1`. Import toast and Toaster in the AssigneeSelect component. Then we use `catch` to handle the error.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
