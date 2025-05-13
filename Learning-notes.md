@@ -573,6 +573,14 @@ Install a library called react-hot-toast. `npm i react-hot-toast@2.4.1`. Import 
 
 Use Select component in Radix UI. Create a statuses array to represent the name shown in the dropdown menu and status. Modify the ToolBar component to change the layout.
 
+### Filter issues
+
+In IssueStatusFilter, use router to push to new url when selecting filtered category.
+
+Use Object.values(Status) to get all Status options.
+
+In issues/list/page.tsx, add searchParams to the component. It is a Promise now. Also check the status before sending it to prisma in case of malicious request such as '?status=OPENx'.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
