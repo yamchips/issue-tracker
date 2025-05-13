@@ -581,6 +581,32 @@ Use Object.values(Status) to get all Status options.
 
 In issues/list/page.tsx, add searchParams to the component. It is a Promise now. Also check the status before sending it to prisma in case of malicious request such as '?status=OPENx'.
 
+### Make columns sortable
+
+First we create an array containing three columns and map the array to each column. We can define the type of the array to avoid type errors.
+
+Then we use a NextLink, instead of our customed Link, to wrap the column headers.
+
+To set the href of each column header, if we use object literal, the sort parameter replace filter parameter(if exists). We need to append sort parameter to current search parameter. We use Link component offered by Next.js, it has href attribute and we can pass a UrlObject to it.
+
+```
+interface UrlObject {
+  pathname?: string;
+  query?: { [key: string]: any };
+  hash?: string;
+}
+```
+
+Pathname is current route's pathname by default.
+
+Second line means the query object is an object with dynamic string keys, and values of any type (string, number or array). Dynamic means that we don't know its name ahead. We use 'orderBy' here because Prisma uses an 'orderBy' option in its query.
+
+We also need to specify orderBy property in searchParams in Props.
+
+Finally we add an inline Arrow from react icons.
+
+**Change sort order**
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
