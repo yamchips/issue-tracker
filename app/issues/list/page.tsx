@@ -10,7 +10,7 @@ interface Props {
   searchParams: Promise<{
     status: Status;
     orderBy: keyof Issue;
-    sortOrder?: "asc" | "desc";
+    sortOrder: "asc" | "desc";
   }>;
 }
 
@@ -25,10 +25,15 @@ const IssuesPage = async ({ searchParams }: Props) => {
   const result = await searchParams;
   const { status, orderBy, sortOrder } = result;
   const category = statusVal.includes(status) ? status : undefined;
+  const orderByParam = columns.map((col) => col.value).includes(orderBy)
+    ? ["asc", "desc"].includes(sortOrder)
+      ? { [orderBy]: sortOrder }
+      : undefined
+    : undefined;
 
   const issues = await prisma.issue.findMany({
     where: { status: category },
-    orderBy: { [orderBy]: sortOrder },
+    orderBy: orderByParam,
   });
   return (
     <div>

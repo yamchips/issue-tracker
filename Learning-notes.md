@@ -619,6 +619,10 @@ Toggle sortOrder in query.
 
 Change the class name of arrow icon.
 
+### Handle search parameter error
+
+If we manually modify search url, current code returns error. Check the orderBy and sortOrder parameter before sending them to prisma.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
