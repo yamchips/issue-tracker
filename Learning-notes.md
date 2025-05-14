@@ -627,7 +627,15 @@ If we manually modify search url, current code returns error. Check the orderBy 
 
 ### Build pagination component
 
-Use Radix UI icon to create a component showing current page, total page and four buttons.
+Use Radix UI icon to create a component Pagination showing current page, total page and four buttons.
+
+### Implement pagination
+
+In Pagination, use useSearchParams to get current search query and set page to wanted number. Then use router to push to new url.
+
+In app/page.tsx, add this component and manually input url to see the correct effect.
+
+If there is no searchParams, we set the current page to 10.
 
 ## Further work
 
