@@ -623,6 +623,12 @@ Change the class name of arrow icon.
 
 If we manually modify search url, current code returns error. Check the orderBy and sortOrder parameter before sending them to prisma.
 
+## Pagination
+
+### Build pagination component
+
+Use Radix UI icon to create a component showing current page, total page and four buttons.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
