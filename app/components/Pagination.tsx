@@ -27,7 +27,7 @@ const Pagination = ({ currentPage, pageSize, totalItem }: Props) => {
   return (
     <Flex align="center" gap="2">
       <Text>
-        Page {searchParams.get("page")} of {totalPage}
+        Page {searchParams.get("page") || 1} of {totalPage}
       </Text>
       <Button
         color="gray"

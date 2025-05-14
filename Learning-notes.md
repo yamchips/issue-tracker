@@ -637,6 +637,15 @@ In app/page.tsx, add this component and manually input url to see the correct ef
 
 If there is no searchParams, we set the current page to 10.
 
+**\_rsc**
+
+In Chrome dev tools, we can see the request like this:
+`http://localhost:3000/?page=6&\_rsc=14z8i`. The \_rsc part is automatically added by Next.js when it fetches a server-rendered component behind the scene. This parameter tells the server that the request is for React Server Component data, not a full page reload.
+
+### Paginate issues page
+
+Add Pagination component to list/page.tsx. First we add page as an attribute to searchParams. Then we add page to the destruction clause. Then we parse the page and get number, also we need to count the total number. In prisma query, we add `skip` and `take` attribute to get the data. Finally we set the three attributes of Pagination component.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
