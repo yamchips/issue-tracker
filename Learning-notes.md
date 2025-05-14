@@ -583,11 +583,11 @@ In issues/list/page.tsx, add searchParams to the component. It is a Promise now.
 
 ### Make columns sortable
 
-First we create an array containing three columns and map the array to each column. We can define the type of the array to avoid type errors.
+In list/page.tsx, first we create an array containing three columns and map the array to each column. We can define the type of the array to avoid type errors.
 
 Then we use a NextLink, instead of our customed Link, to wrap the column headers.
 
-To set the href of each column header, if we use object literal, the sort parameter replace filter parameter(if exists). We need to append sort parameter to current search parameter. We use Link component offered by Next.js, it has href attribute and we can pass a UrlObject to it.
+To set the href of each column header, if we use object literal, the sort parameter replace filter parameter (if exists). For example, we choose a filter status and then click column header, the new query only contains column header parameter. We need to append sort parameter to current search parameter. We use Link component offered by Next.js, it has href attribute and we can pass a UrlObject to it.
 
 ```
 interface UrlObject {
@@ -605,7 +605,19 @@ We also need to specify orderBy property in searchParams in Props.
 
 Finally we add an inline Arrow from react icons.
 
+**Improve IssueStatusFilter**
+
+Currently, we hard code the url in this component. When we click column header and then choose filter type, the search parameter only contains filter type. This component is client component, so we use useSearchParams to get current search parameters. We also use URLSearchParams to create a new search parameter and append filter type to it.
+
 **Change sort order**
+
+Add a sortOrder prop in searchParams, it is either 'asc' or 'desc'.
+
+Destruct searchParams and add it to prisma query.
+
+Toggle sortOrder in query.
+
+Change the class name of arrow icon.
 
 ## Further work
 

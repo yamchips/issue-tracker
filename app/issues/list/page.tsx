@@ -7,7 +7,11 @@ import { Issue, Status } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
 
 interface Props {
-  searchParams: Promise<{ status: Status; orderBy: keyof Issue }>;
+  searchParams: Promise<{
+    status: Status;
+    orderBy: keyof Issue;
+    sortOrder?: "asc" | "desc";
+  }>;
 }
 
 const IssuesPage = async ({ searchParams }: Props) => {
@@ -17,11 +21,14 @@ const IssuesPage = async ({ searchParams }: Props) => {
     { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
   ];
   const statusVal = Object.values(Status);
+
   const result = await searchParams;
-  const { status } = result;
+  const { status, orderBy, sortOrder } = result;
   const category = statusVal.includes(status) ? status : undefined;
+
   const issues = await prisma.issue.findMany({
     where: { status: category },
+    orderBy: { [orderBy]: sortOrder },
   });
   return (
     <div>
@@ -33,12 +40,20 @@ const IssuesPage = async ({ searchParams }: Props) => {
               <Table.ColumnHeaderCell key={column.value}>
                 <NextLink
                   href={{
-                    query: { ...result, orderBy: column.value },
+                    query: {
+                      ...result,
+                      orderBy: column.value,
+                      sortOrder: sortOrder === "asc" ? "desc" : "asc",
+                    },
                   }}
                 >
                   {column.label}
                   {column.value === result.orderBy && (
-                    <ArrowUpIcon className="inline" />
+                    <ArrowUpIcon
+                      className={`inline transition-transform ${
+                        result.sortOrder === "desc" ? "rotate-180" : ""
+                      }`}
+                    />
                   )}
                 </NextLink>
               </Table.ColumnHeaderCell>
