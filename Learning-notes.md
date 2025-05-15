@@ -671,6 +671,22 @@ Install a library called recharts. Use its ResponsiveContainer to wrap our Barch
 
 To set the color based on our theme, we open dev tools and search 'acc' in root styles, choose one color variable and use `sytle={{fill:'var(--accent-9)'}}` to fill the bar chart.
 
+### Layout the home page
+
+My version in the Grid:
+
+```
+<Box className="mx-auto w-full">
+   <IssueSummary open={open} inProgress={inProgress} closed={closed} />
+</Box>
+<Box className="md:row-span-2">
+   <LatestIssues />
+</Box>
+<IssueChart open={open} inProgress={inProgress} closed={closed} />
+```
+
+Mosh's version is cleaner.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
