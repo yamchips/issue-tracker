@@ -655,6 +655,12 @@ Move the table to a separate component IssueTable. This component only uses sort
 
 SearchParams is obtained and parsed in page component, so it's reasonable to define it here. But I didn't implement my way because currently we only have one component on page that uses searchParams. If there are multiple components which require search parameters in the future, we can implement my way.
 
+## Build Dashboard
+
+### Build the latest issues component
+
+Create a new component. Use Card to wrap the Table. Use prisma to get the issues by descending order in create time. Use `include` to get the assigned user. We can also use nested `select` to only get the user image.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
