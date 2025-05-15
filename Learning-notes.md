@@ -665,6 +665,12 @@ Create a new component. Use Card to wrap the Table. Use prisma to get the issues
 
 Create a new component. Use Flex to wrap three Cards. Use an object array to contain data we want to show. This component receives three number as property. We get the status counts in Home page and pass them to this component.
 
+### Build the bar chart component
+
+Install a library called recharts. Use its ResponsiveContainer to wrap our Barchart. Create a const that represents our data and like issue summary component, we pass three parameters to this component.
+
+To set the color based on our theme, we open dev tools and search 'acc' in root styles, choose one color variable and use `sytle={{fill:'var(--accent-9)'}}` to fill the bar chart.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
