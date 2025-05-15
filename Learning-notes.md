@@ -661,6 +661,10 @@ SearchParams is obtained and parsed in page component, so it's reasonable to def
 
 Create a new component. Use Card to wrap the Table. Use prisma to get the issues by descending order in create time. Use `include` to get the assigned user. We can also use nested `select` to only get the user image.
 
+### Build the issue summary component
+
+Create a new component. Use Flex to wrap three Cards. Use an object array to contain data we want to show. This component receives three number as property. We get the status counts in Home page and pass them to this component.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
