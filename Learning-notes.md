@@ -644,7 +644,16 @@ In Chrome dev tools, we can see the request like this:
 
 ### Paginate issues page
 
-Add Pagination component to list/page.tsx. First we add page as an attribute to searchParams. Then we add page to the destruction clause. Then we parse the page and get number, also we need to count the total number. In prisma query, we add `skip` and `take` attribute to get the data. Finally we set the three attributes of Pagination component.
+Add Pagination component to list/page.tsx. First we add page as an attribute to searchParams. Then we add page to the destruction clause. Then we parse the page and get number, also we need to count the total number. In prisma query, we add `skip` and `take` attribute to get the data (refer to this [page](https://www.prisma.io/docs/orm/reference/prisma-client-reference#findmany)). Finally we set the three attributes of Pagination component.
+
+### Refactor issues list page
+
+Move the table to a separate component IssueTable. This component only uses sortOrder property from search parameters. So, we can refactor it in two ways:
+
+1. Mosh's way: put searchParams into IssueTable and let page reuse it.
+2. My way: define searchParams in page and let IssueTable reuse it.
+
+SearchParams is obtained and parsed in page component, so it's reasonable to define it here. But I didn't implement my way because currently we only have one component on page that uses searchParams. If there are multiple components which require search parameters in the future, we can implement my way.
 
 ## Further work
 
