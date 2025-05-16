@@ -713,6 +713,18 @@ To validate it, we add {log:['query']} in client.ts file and restart the server.
 
 Add an example env file to indicate what environment key our app needs.
 
+### Set up error tracking tool
+
+Popular error tracking tools:
+
+1. Sentry
+
+2. BugSnag
+
+3. LockRocket
+
+Here we use Sentry. Follow its instructions and throw a sample error.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
