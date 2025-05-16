@@ -695,6 +695,20 @@ Here we only add title and description. We can also add open graph and twitter p
 
 This [picture](./public/metadata_example.png) also shows how metadata works in social media post.
 
+We can preview our website sharing result in these websites:
+
+1. metatags.io
+
+2. socialsharepreview.com
+
+3. opengraph.xyz
+
+### Optimize performance using cache
+
+In IssueDetaiPage, we fetch one user from database twice. We use cache function to wrap a function with expensive computation.
+
+To validate it, we add {log:['query']} in client.ts file and restart the server. Refresh one issue detail page, we only see one query to get the issue.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
