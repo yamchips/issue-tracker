@@ -687,6 +687,14 @@ My version in the Grid:
 
 Mosh's version is cleaner.
 
+## Optimization
+
+### Add metadata
+
+Here we only add title and description. We can also add open graph and twitter property so it can be shared on social media. These two properties are actually pictures. This [website](https://www.zelolab.com/blog/how-to-create-and-set-up-a-social-share-preview-image-on-your-website/) explains what it looks like with and without these properties.
+
+This [picture](./public/metadata_example.png) also shows how metadata works in social media post.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
