@@ -709,6 +709,10 @@ In IssueDetaiPage, we fetch one user from database twice. We use cache function 
 
 To validate it, we add {log:['query']} in client.ts file and restart the server. Refresh one issue detail page, we only see one query to get the issue.
 
+### Add an example env file
+
+Add an example env file to indicate what environment key our app needs.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
