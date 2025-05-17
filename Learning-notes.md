@@ -725,6 +725,42 @@ Popular error tracking tools:
 
 Here we use Sentry. Follow its instructions and throw a sample error.
 
+### Set up production database
+
+Use PlanetScale. It has no free plan right now.
+
+Create a database, choose region, select language: prisma. Create a username and password. Get the DATABASE_URL and store it somewhere.
+
+### Deploy to vercel
+
+If we use planetscale, in schema.prisma, add `relationMode='prisma'` in `datasource db` because planetscale doesn't support foreign key constraints.
+
+Then, we need to regenerate all migrations because previous ones use foreign key constraints. Delete migration folder. Run `npx prisma migrate dev`.
+
+Create and push current code to a new github repository.
+
+In vercel, add a new project, import the issue-tracker repository.
+
+Override build command to: `prisma generate && prisma migrate deploy && next build`
+
+`prisma generate`: tell prisma to regenerate prisma client on every build
+
+`prisma migrate deploy`: sync database with model
+
+Env variables: copy and paste.
+
+1. DATABASE_URL: use the URL we got from planetscale
+
+2. NEXTAUTH_URL: update after deploying, add https and no / at the end
+
+3. NEXTAUTH_SECRET: regenerate another random string
+
+4. GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET: the best practice is to make dev and product env variable different
+
+Google cloud console settings need to change because we use localhost:3000 as our website name, we need to change it to the deployed address.
+
+Update OAuth 2.0 Client ID, Authorized JavaScript origins and Authorized redirect URIs, add our new website.
+
 ## Further work
 
 1. Update the status of an issue in edit issue page
