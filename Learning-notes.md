@@ -731,17 +731,25 @@ Use PlanetScale. It has no free plan right now.
 
 Create a database, choose region, select language: prisma. Create a username and password. Get the DATABASE_URL and store it somewhere.
 
+Here, we use Aiven free MySQL database.
+
 ### Deploy to vercel
 
-If we use planetscale, in schema.prisma, add `relationMode='prisma'` in `datasource db` because planetscale doesn't support foreign key constraints.
+If we use PlanetScale/Aiven, in schema.prisma, add `relationMode='prisma'` in `datasource db` because PlanetScale doesn't support foreign key constraints.
+
+      After adding this, the database has no foreign key constraints and it doesn't enforce referential integrity. We need to enforce it by app logic.
+
+      We also need to add a primary key to VerificationToken.
 
 Then, we need to regenerate all migrations because previous ones use foreign key constraints. Delete migration folder. Run `npx prisma migrate dev`.
+
+If we failed to deploy, Aiven might cache previous migration, we need to run `npx prisma migrate reset` to clear online database records.
 
 Create and push current code to a new github repository.
 
 In vercel, add a new project, import the issue-tracker repository.
 
-Override build command to: `prisma generate && prisma migrate deploy && next build`
+Override build command to: `prisma generate && prisma migrate deploy && next build`. In prisma [documentation](https://www.prisma.io/docs/orm/prisma-client/deployment/serverless/deploy-to-vercel#updating-prisma-client-during-vercel-builds), it is recommended that adding `"postinstall": "prisma generate"` in `"scripts"` in package.json.
 
 `prisma generate`: tell prisma to regenerate prisma client on every build
 
@@ -749,9 +757,9 @@ Override build command to: `prisma generate && prisma migrate deploy && next bui
 
 Env variables: copy and paste.
 
-1. DATABASE_URL: use the URL we got from planetscale
+1. DATABASE_URL: use the URL we got from PlanetScale
 
-2. NEXTAUTH_URL: update after deploying, add https and no / at the end
+2. NEXTAUTH_URL: update after deploying, add `https` and no / at the end
 
 3. NEXTAUTH_SECRET: regenerate another random string
 
@@ -760,6 +768,80 @@ Env variables: copy and paste.
 Google cloud console settings need to change because we use localhost:3000 as our website name, we need to change it to the deployed address.
 
 Update OAuth 2.0 Client ID, Authorized JavaScript origins and Authorized redirect URIs, add our new website.
+
+**Why foreign keys are avoided in cloud DBs like PlanetScale/Aiven**
+
+✅ Horizontal Scaling
+Definition: Distributing data across multiple servers (shards) to handle more traffic.
+
+Issue with FKs: Foreign keys enforce integrity across tables—this becomes difficult if related records are on different shards. Validating or cascading actions (like deletions) would require cross-node communication, which hurts performance and reliability.
+
+✅ Branching Workflows
+Definition: Similar to Git branches, PlanetScale lets you create DB schema branches and merge them later.
+
+FK Conflict Risk: Schema changes like foreign key constraints can cause merge conflicts or schema locks, breaking safe continuous delivery pipelines.
+
+✅ Asynchronous Replication
+Definition: Data is copied to replicas with a delay.
+
+FK Problem: A parent record might not yet exist on a replica when a child is inserted—causing FK violation even though the write order is valid on the primary. This breaks replication.
+
+🟡 So, to maximize safety and scalability, hosted cloud databases often disable foreign keys and expect applications to enforce referential integrity in code.
+
+**Referential Integrity**
+
+Referential integrity ensures that relationships between tables remain consistent.
+
+If we want to delete an user, we need to either delete the related field in Session, Account, Authenticator, Issue or update them to null.
+
+**distributed and non-distributed database**
+
+A non-distributed database runs on a single server or a tightly controlled cluster where:
+
+All data is stored in one place (or a few tightly coupled replicas).
+
+Foreign key constraints, transactions, and joins are all handled reliably.
+
+Examples:
+
+Local MySQL/PostgreSQL instance
+
+Amazon RDS MySQL/PostgreSQL (standard)
+
+Google Cloud SQL (standard)
+
+Supabase (PostgreSQL)
+
+✅ Pros:
+
+Strong consistency
+
+Full relational features (FKs, ACID transactions)
+
+Simpler logic
+
+❌ Cons:
+
+Harder to scale horizontally
+
+Limited performance under very high loads
+
+A distributed database spreads your data across multiple machines (nodes/shards) to:
+
+Handle more users
+
+Serve global regions
+
+Support higher availability and performance
+
+🔁 Horizontal scaling is the key here:
+You don’t just increase RAM/CPU (vertical scaling).
+
+Instead, you add more database nodes and split your data across them.
+
+**MySQL, PostgreSQL and foreign key**
+
+Whether a database supports foreign key depends on the type of database deployment, distributed or non-distributed, not the database engine (MySQL or PostgreSQL).
 
 ## Further work
 
