@@ -1,7 +1,7 @@
 import { IssueStatusBadge, Link } from "@/app/components";
 import { Issue, Status } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
-import { Table } from "@radix-ui/themes";
+import { Table, Text } from "@radix-ui/themes";
 import NextLink from "next/link";
 
 export interface IssueQuery {
@@ -18,6 +18,7 @@ interface Props {
 
 const IssueTable = async ({ query, issues }: Props) => {
   const { sortOrder } = query;
+  if (issues.length === 0) return <Text className="p-4">No issues found.</Text>;
   return (
     <Table.Root variant="surface">
       <Table.Header>
