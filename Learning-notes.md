@@ -845,7 +845,7 @@ Whether a database supports foreign key depends on the type of database deployme
 
 ## Further work
 
-1. Update the status of an issue in edit issue page
+1. ✅ Update the status of an issue in edit issue page.
 2. Add theme toggle function
 3. Add register user function
 4. Add another Auth provider
