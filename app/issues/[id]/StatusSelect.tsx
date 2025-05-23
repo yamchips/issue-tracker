@@ -9,7 +9,7 @@ const StatusSelect = ({ issue }: { issue: Issue }) => {
   const router = useRouter();
   const assignStatus = (val: string) => {
     axios
-      .patch("/xapi/issues/" + issue.id, {
+      .patch("/api/issues/" + issue.id, {
         ...issue,
         status: val,
       })

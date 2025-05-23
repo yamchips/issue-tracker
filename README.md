@@ -4,6 +4,8 @@
 
 A full-stack issue tracking application built with Next.js, Prisma, and Radix UI—refactored, optimized, and extended beyond Mosh Hamedani’s original tutorial.
 
+    Note: To view the edit function, log in using: `user@gmail.com` and `123456`.
+
 ## Tech Stack
 
 - Frontend: Next.js 15 (App Router), React 19, Radix UI, Tailwind CSS

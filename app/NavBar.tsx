@@ -12,6 +12,7 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import { FaRegUserCircle } from "react-icons/fa";
 
 const NavBar = () => {
   return (
@@ -44,14 +45,21 @@ const AuthStatus = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        <Avatar
-          src={session!.user!.image!}
-          fallback="?"
-          size="2"
-          radius="full"
-          className="cursor-pointer"
-          referrerPolicy="no-referrer"
-        />
+        {session?.user?.image ? (
+          <button className="cursor-pointer rounded-full p-0 border-0 bg-transparent">
+            <Avatar
+              src={session.user.image}
+              fallback="?"
+              size="2"
+              radius="full"
+              referrerPolicy="no-referrer"
+            />
+          </button>
+        ) : (
+          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer">
+            <FaRegUserCircle size={20} />
+          </button>
+        )}
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Label>
