@@ -39,8 +39,9 @@ A full-stack issue tracking application built with Next.js, Prisma, and Radix UI
 
 ## Key Difference with Mosh's 2023 Course
 
-- params and searchParams in Props are Promise type now
+- Params and searchParams in Props are Promise type now
 - PlantScale no longer offers free Hobby tier, use Aiven as production database
+- Add credentials provider, users can log in using email and password to enable edit function
 
 ## Theming & UI
 

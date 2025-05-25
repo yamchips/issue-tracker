@@ -7,8 +7,8 @@ import toast, { Toaster } from "react-hot-toast";
 
 const StatusSelect = ({ issue }: { issue: Issue }) => {
   const router = useRouter();
-  const assignStatus = (val: string) => {
-    axios
+  const assignStatus = async (val: string) => {
+    await axios
       .patch("/api/issues/" + issue.id, {
         ...issue,
         status: val,

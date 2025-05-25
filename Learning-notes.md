@@ -849,3 +849,7 @@ Whether a database supports foreign key depends on the type of database deployme
 2. Add theme toggle function
 3. Add register user function
 4. Add another Auth provider
+
+### Add register user function
+
+After configuring credentials provider, the drop down trigger cannot work normally. A fallback picture should be added. Here we use a react icon and wrap it in a button element. We also use a button to wrap Avatar element so in both cases it's clickable and we can see the drop down menu.
