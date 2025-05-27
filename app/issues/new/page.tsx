@@ -11,9 +11,4 @@ const NewIssuePage = () => {
   return <IssueForm />;
 };
 
-export const metadata: Metadata = {
-  title: "Issue Tracker - New Issue",
-  description: "Create new issue",
-};
-
 export default NewIssuePage;
