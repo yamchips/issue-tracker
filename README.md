@@ -4,7 +4,12 @@
 
 A full-stack issue tracking application built with Next.js, Prisma, and Radix UI—refactored, optimized, and extended beyond Mosh Hamedani’s original tutorial.
 
-    Note: To view the edit function, log in using: `user@gmail.com` and `123456`.
+## Key Difference with Mosh's 2023 Course
+
+- Params and searchParams in Props are Promise type now
+- PlantScale no longer offers free Hobby tier, use Aiven as production database
+- Add registration page and credentials provider, users can register and log in to enable edit function
+- Add status selector on issue detail page to update status
 
 ## Tech Stack
 
@@ -36,13 +41,6 @@ A full-stack issue tracking application built with Next.js, Prisma, and Radix UI
 - Session access with `getServerSession()`
 - Middleware-protected routes for authenticated users
 - Secure access to API routes
-
-## Key Difference with Mosh's 2023 Course
-
-- Params and searchParams in Props are Promise type now
-- PlantScale no longer offers free Hobby tier, use Aiven as production database
-- Add credentials provider, users can log in using email and password to enable edit function
-- Add status selector on issue detail page to update status
 
 ## Theming & UI
 
