@@ -1,18 +1,13 @@
 import { prisma } from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import bcrypt from "bcrypt";
-
-const schema = z.object({
-  email: z.string().email(),
-  password: z.string().min(5),
-});
+import { registerSchema } from "@/app/validationSchemas";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const validation = schema.safeParse(body);
+  const validation = registerSchema.safeParse(body);
   if (!validation.success) {
-    return NextResponse.json(validation.error.errors, { status: 400 });
+    return NextResponse.json(validation.error.format(), { status: 400 });
   }
   const sameUser = await prisma.user.findUnique({
     where: { email: body.email },
@@ -24,10 +19,10 @@ export async function POST(request: NextRequest) {
     );
   }
   const hashedPassword = await bcrypt.hash(body.password, 10);
-  // const name =
   const newUser = await prisma.user.create({
     data: {
       email: body.email,
+      name: body.email.split("@")[0],
       hashedPassword: hashedPassword,
     },
   });

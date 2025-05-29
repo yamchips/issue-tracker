@@ -37,21 +37,13 @@ const AuthStatus = () => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
-        {session?.user?.image ? (
-          <button className="cursor-pointer rounded-full p-0 border-0 bg-transparent">
-            <Avatar
-              src={session.user.image}
-              fallback="?"
-              size="2"
-              radius="full"
-              referrerPolicy="no-referrer"
-            />
-          </button>
-        ) : (
-          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center cursor-pointer">
-            <FaRegUserCircle size={20} />
-          </button>
-        )}
+        <Avatar
+          src={session?.user?.image || "/defaultUser.png"}
+          fallback={"?"}
+          radius="full"
+          size={"2"}
+          referrerPolicy="no-referrer"
+        />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Label>
@@ -70,6 +62,7 @@ const NavLinks = () => {
   const links = [
     { name: "Dashboard", href: "/" },
     { name: "Issues", href: "/issues/list" },
+    { name: "Register", href: "/register" },
   ];
   return (
     <ul className="flex space-x-6">

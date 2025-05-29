@@ -19,3 +19,10 @@ export const issuePatchSchema = z.object({
     .optional()
     .nullable(),
 });
+
+export const registerSchema = z.object({
+  email: z.string().email({ message: "Email is invalid" }),
+  password: z
+    .string()
+    .min(5, { message: "Password should be more than 5 characters" }),
+});

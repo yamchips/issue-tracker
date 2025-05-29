@@ -10,6 +10,9 @@ const LatestIssues = async () => {
     take: 5,
     include: { assignedToUser: { select: { image: true } } },
   });
+  const imageList = issues.map((issue) => issue.assignedToUser?.image);
+  const userList = issues.map((issue) => issue.assignedToUser);
+  console.log(userList, imageList);
   return (
     <Card>
       <Heading size={"4"} mb={"3"}>
@@ -27,10 +30,11 @@ const LatestIssues = async () => {
                   </Flex>
                   {issue.assignedToUser && (
                     <Avatar
-                      src={issue.assignedToUser?.image!}
-                      fallback={""}
+                      src={issue.assignedToUser?.image || "/defaultUser.png"}
+                      fallback={"?"}
                       radius="full"
                       size={"2"}
+                      referrerPolicy="no-referrer"
                     />
                   )}
                 </Flex>
