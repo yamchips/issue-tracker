@@ -10,9 +10,6 @@ const LatestIssues = async () => {
     take: 5,
     include: { assignedToUser: { select: { image: true } } },
   });
-  const imageList = issues.map((issue) => issue.assignedToUser?.image);
-  const userList = issues.map((issue) => issue.assignedToUser);
-  console.log(userList, imageList);
   return (
     <Card>
       <Heading size={"4"} mb={"3"}>
