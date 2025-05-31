@@ -10,6 +10,7 @@ A full-stack issue tracking application built with Next.js, Prisma, and Radix UI
 - PlantScale no longer offers free Hobby tier, use Aiven as production database
 - Add registration page and credentials provider, users can register and log in to enable edit function
 - Add status selector on issue detail page to update status
+- In custom Link component, `legacyBehavior` will be deprecated. To ensure future consistency, use RadixLink to wrap NextLink
 
 ## Tech Stack
 
