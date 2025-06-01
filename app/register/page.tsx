@@ -4,7 +4,7 @@ import { InfoCircledIcon } from "@radix-ui/react-icons";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { ErrorMessage } from "../components";
@@ -35,6 +35,9 @@ const RegisterPage = () => {
       }
     }
   };
+  useEffect(() => {
+    document.title = "Issue Tracker - Register";
+  }, []);
   return (
     <div className="max-w-3xs space-y-4">
       {errorInfo && (
