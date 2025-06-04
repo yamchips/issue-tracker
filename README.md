@@ -11,6 +11,7 @@ A full-stack issue tracking application built with Next.js, Prisma, and Radix UI
 - Add registration page and credentials provider, users can register and log in to enable edit function
 - Add status selector on issue detail page to update status
 - In custom Link component, `legacyBehavior` will be deprecated. To ensure future consistency, use RadixLink to wrap NextLink
+- In AssigneeSelector component, Select component no longer accepts an empty string as value, use 'unassigned' to represent unassigned status
 
 ## Tech Stack
 
