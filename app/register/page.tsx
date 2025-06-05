@@ -27,7 +27,6 @@ const RegisterPage = () => {
       await axios.post("/api/register", data);
       router.push("/api/auth/signin");
     } catch (error) {
-      console.log(error);
       if (axios.isAxiosError(error)) {
         setErrorInfo(error.response?.data.error);
       } else {
