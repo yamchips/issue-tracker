@@ -17,7 +17,7 @@ const IssueStatusFilter = () => {
 
   return (
     <Select.Root
-      defaultValue={searchParams.get("status") || "all"}
+      value={searchParams.get("status") || "all"}
       onValueChange={(val) => {
         const params = new URLSearchParams(searchParams);
         const statusVal = Object.values(Status);
@@ -29,7 +29,7 @@ const IssueStatusFilter = () => {
         router.push(`/issues/list?${params.toString()}`);
       }}
     >
-      <Select.Trigger placeholder="Filter by status..." />
+      <Select.Trigger />
       <Select.Content>
         {statuses.map((status) => (
           <Select.Item key={status.label} value={status.value || "all"}>
