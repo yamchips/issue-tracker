@@ -36,6 +36,21 @@ export default async function Home() {
 export const metadata: Metadata = {
   title: "Issue Tracker - Dashboard",
   description: "View a summary of project issues",
+  openGraph: {
+    title: "Issue Tracker",
+    description: "An example app to deal with issues.",
+    url: "https://issue-tracker-gamma-puce.vercel.app",
+    images: [
+      { url: "https://issue-tracker-gamma-puce.vercel.app/home-page.png" },
+    ],
+    type: "website",
+  },
+  twitter: {
+    title: "Issue Tracker",
+    description: "An example app to deal with issues.",
+    images: ["https://issue-tracker-gamma-puce.vercel.app/home-page.png"],
+    card: "summary_large_image",
+  },
 };
 
 export const dynamic = "force-dynamic";
